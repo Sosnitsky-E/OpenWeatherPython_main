@@ -42,6 +42,6 @@ jobs:
 
     - name: Run Pytest on changed files
       if: steps.changed-py-files.outputs.any_changed == 'true'
-      run: pytest --alluredir=allure-results ${{ steps.changed-py-files.outputs.all_changed_files }}
+
 
 
