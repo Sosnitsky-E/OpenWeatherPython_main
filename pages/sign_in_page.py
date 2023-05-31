@@ -1,6 +1,6 @@
 from pages.base_page import *
-from tests.Folder_groups.test_group_ducktales.test_data import sign_in_page_data
-from tests.Folder_groups.test_group_ducktales.locators.sign_in_locators import SignInLocator
+from test_data import sign_in_page_data
+from locators.sign_in_locators import SignInLocator
 
 
 
