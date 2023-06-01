@@ -81,7 +81,7 @@ class ApiKeysPage(BasePage):
 
     def get_last_row_elements_from_api_keys_able(self):
         len_t = self.get_length_of_table_api_keys()
-        column_values = self.elements_are_visible(ApiKeysLocator.row_elements(self, 2))
+        column_values = self.elements_are_visible(ApiKeysLocator.row_elements(self, len_t))
         return column_values
 
     def check_default_status_generated_api_key(self):
