@@ -38,4 +38,12 @@ class TestApiKey:
         api_keys_page.click_generate_api_key_name_button()
         api_keys_page.check_is_success_generate_notice_displayed()
 
+    def test_tc_017_04_06_new_api_key_default_status_is_active(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.enter_created_api_key_name("Default status check name ")
+        api_keys_page.click_generate_api_key_name_button()
+        api_keys_page.check_default_status_generated_api_key()
+
+
 
