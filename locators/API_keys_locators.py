@@ -19,4 +19,6 @@ class ApiKeysLocator:
     NOTICE_MESSAGE = By.XPATH, "//div[@class='panel-body']"
 
 
-
+    def row_elements(self, row_number):
+        t_r = By.XPATH, f"//tbody/tr[{row_number}]/td"
+        return t_r
