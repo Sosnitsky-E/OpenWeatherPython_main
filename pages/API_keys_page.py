@@ -88,3 +88,8 @@ class ApiKeysPage(BasePage):
         last_row_elements = self.get_last_row_elements_from_api_keys_able()
         new_generated_api_key_status = last_row_elements[2].text
         assert new_generated_api_key_status == "Active", "The default status of the new API key does not  'Active'"
+
+    def check_is_api_key_tab_active(self):
+        api_key_tab_elements = self.driver.find_elements(*ApiKeysLocator.API_KEY_TAB_ELEMENTS)
+        initial_view_api_key_tab = api_key_tab_elements[2].get_attribute('class')
+        assert initial_view_api_key_tab == "active", "API Keys tab view is not active"
