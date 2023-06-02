@@ -17,6 +17,7 @@ class ApiKeysLocator:
     GENERATE_BUTTON = By.CSS_SELECTOR, '.new_api_key_form .button-round.dark'
     TABLE_API_KEYS = By.CSS_SELECTOR, "tbody tr"
     NOTICE_MESSAGE = By.XPATH, "//div[@class='panel-body']"
+    API_KEY_TAB_ELEMENTS = By.CSS_SELECTOR, '#myTab li'
 
 
     def row_elements(self, row_number):

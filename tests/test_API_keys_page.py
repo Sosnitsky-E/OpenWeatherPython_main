@@ -3,6 +3,11 @@ from pages.API_keys_page import ApiKeysPage
 
 class TestApiKey:
 
+    def test_tc_017_01_01_tab_api_keys_is_active(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_is_api_key_tab_active()
+
     def test_tc_017_04_01_module_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
