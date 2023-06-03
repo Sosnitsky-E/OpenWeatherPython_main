@@ -18,6 +18,7 @@ class ApiKeysLocator:
     TABLE_API_KEYS = By.CSS_SELECTOR, "tbody tr"
     NOTICE_MESSAGE = By.XPATH, "//div[@class='panel-body']"
     API_KEY_TAB_ELEMENTS = By.CSS_SELECTOR, '#myTab li'
+    ALERT_INFO = By.CSS_SELECTOR, ".alert-info"
 
 
     def row_elements(self, row_number):

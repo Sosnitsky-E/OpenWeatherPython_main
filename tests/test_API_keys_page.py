@@ -1,3 +1,5 @@
+import time
+
 from pages.API_keys_page import ApiKeysPage
 
 
@@ -7,6 +9,11 @@ class TestApiKey:
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_api_key_tab_active()
+
+    def test_tc_017_01_02_alert_info_is_displayed_after_oening_api_keys_page(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_is_alert_info_displayed()
 
     def test_tc_017_04_01_module_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
@@ -49,6 +56,3 @@ class TestApiKey:
         api_keys_page.enter_created_api_key_name("Default status check name ")
         api_keys_page.click_generate_api_key_name_button()
         api_keys_page.check_default_status_generated_api_key()
-
-
-
