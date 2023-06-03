@@ -93,3 +93,7 @@ class ApiKeysPage(BasePage):
         api_key_tab_elements = self.driver.find_elements(*ApiKeysLocator.API_KEY_TAB_ELEMENTS)
         initial_view_api_key_tab = api_key_tab_elements[2].get_attribute('class')
         assert initial_view_api_key_tab == "active", "API Keys tab view is not active"
+
+    def check_is_alert_info_displayed(self):
+        alert_info_displayed = self.element_is_displayed(ApiKeysLocator.ALERT_INFO)
+        assert alert_info_displayed, "Alert info does not displayed"
