@@ -15,10 +15,15 @@ class TestApiKey:
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_alert_info_displayed()
 
-    def test_tc_017_04_01_module_create_api_key_is_visible(self, driver):
+    def test_tc_017_01_03_create_api_key_module_is_displayed(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
-        api_keys_page.check_module_create_api_key_is_visible()
+        api_keys_page.check_module_create_api_key_displayed()
+
+    def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_module_title_create_api_key_is_visible()
 
     def test_tc_017_04_02_api_key_name_has_limit_20_characters(self, driver):
         api_keys_page = ApiKeysPage(driver)
