@@ -13,7 +13,7 @@ class ApiKeysPage(BasePage):
         api_key_tab = self.driver.find_element(*ApiKeysLocator.TAB_API_KEYS)
         api_key_tab.click()
 
-    def check_module_create_api_key_is_visible(self):
+    def check_module_title_create_api_key_is_visible(self):
         module_create_api_key = self.driver.find_element(*ApiKeysLocator.MODULE_API_KEY_CREATE)
         assert module_create_api_key.is_displayed(), "module with title “Create key“ does not visible"
 
@@ -97,3 +97,8 @@ class ApiKeysPage(BasePage):
     def check_is_alert_info_displayed(self):
         alert_info_displayed = self.element_is_displayed(ApiKeysLocator.ALERT_INFO)
         assert alert_info_displayed, "Alert info does not displayed"
+
+    def check_module_create_api_key_displayed(self):
+        module_create_api_key = self.element_is_displayed(ApiKeysLocator.MODULE_API_KEY_CREATE)
+        assert module_create_api_key, "The module 'Create API key' does not displayed"
+
