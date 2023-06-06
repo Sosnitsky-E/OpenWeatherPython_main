@@ -66,7 +66,7 @@ class ApiKeysPage(BasePage):
         generate_api_key_button.click()
 
     def get_length_of_table_api_keys(self):
-        initial_table_api_keys = self.elements_are_visible(ApiKeysLocator.TABLE_API_KEYS)
+        initial_table_api_keys = self.elements_are_visible(ApiKeysLocator.TABLE_API_KEYS_CONTENT)
         return len(initial_table_api_keys)
 
     def check_is_api_key_generated(self, initial_table_length):
@@ -102,3 +102,6 @@ class ApiKeysPage(BasePage):
         module_create_api_key = self.element_is_displayed(ApiKeysLocator.MODULE_API_KEY_CREATE)
         assert module_create_api_key, "The module 'Create API key' does not displayed"
 
+    def check_is_displayed_api_keys_list(self):
+        api_keys_list = self.element_is_displayed(ApiKeysLocator.TABLE_API_KEYS)
+        assert api_keys_list, "The API keys list does not displayed"
