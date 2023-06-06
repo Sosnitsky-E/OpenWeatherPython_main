@@ -15,11 +15,11 @@ class ApiKeysLocator:
     API_KEY_NAME_FIRST_ROW = By.XPATH, "//div[@class='col-md-8']//tr[1]//td[2]"
     NEW_API_KEY_NAME = By.CSS_SELECTOR, ".new_api_key_form .owm_input"
     GENERATE_BUTTON = By.CSS_SELECTOR, '.new_api_key_form .button-round.dark'
-    TABLE_API_KEYS = By.CSS_SELECTOR, "tbody tr"
+    TABLE_API_KEYS_CONTENT = By.CSS_SELECTOR, "tbody tr"
     NOTICE_MESSAGE = By.XPATH, "//div[@class='panel-body']"
     API_KEY_TAB_ELEMENTS = By.CSS_SELECTOR, '#myTab li'
     ALERT_INFO = By.CSS_SELECTOR, ".alert-info"
-
+    TABLE_API_KEYS = By.CSS_SELECTOR, ".material_table.api-keys"
 
     def row_elements(self, row_number):
         t_r = By.XPATH, f"//tbody/tr[{row_number}]/td"
