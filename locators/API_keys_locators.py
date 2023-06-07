@@ -24,3 +24,7 @@ class ApiKeysLocator:
     def row_elements(self, row_number):
         t_r = By.XPATH, f"//tbody/tr[{row_number}]/td"
         return t_r
+
+    def status_api_key(self, row_num):
+        return By.XPATH, f"//div//tr[{row_num}]/td[3]/span"
+

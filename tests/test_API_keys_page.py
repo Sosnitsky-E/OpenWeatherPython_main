@@ -25,6 +25,10 @@ class TestApiKey:
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_displayed_api_keys_list()
 
+    def test_tc_017_02_0_api_keys_status_are_displayed(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_is_api_keys_status_displayed()
 
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
