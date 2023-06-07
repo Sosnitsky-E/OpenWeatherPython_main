@@ -105,3 +105,9 @@ class ApiKeysPage(BasePage):
     def check_is_displayed_api_keys_list(self):
         api_keys_list = self.element_is_displayed(ApiKeysLocator.TABLE_API_KEYS)
         assert api_keys_list, "The API keys list does not displayed"
+
+    def check_is_api_keys_status_displayed(self):
+        length_api_keys_table = self.get_length_of_table_api_keys()
+        for i in range(1, length_api_keys_table + 1):
+            status_display = self.element_is_displayed(ApiKeysLocator.status_api_key(self, i))
+            assert status_display, f"The API key status does not display in the row {i}. "
