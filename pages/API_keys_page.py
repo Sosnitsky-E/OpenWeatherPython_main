@@ -79,13 +79,36 @@ class ApiKeysPage(BasePage):
         assert actual_new_api_key_notice_text == expected_new_api_key_notice_text, \
             "The success generate API key notice text does not displayed"
 
-    def get_last_row_elements_from_api_keys_able(self):
+    def get_last_row_elements_from_api_keys_table(self):
         len_t = self.get_length_of_table_api_keys()
         column_values = self.elements_are_visible(ApiKeysLocator.row_elements(self, len_t))
         return column_values
 
+    def get_row_elements_by_number_from_api_keys_table(self, row_num):
+        column_values = self.elements_are_visible(ApiKeysLocator.row_elements(self, row_num))
+        return column_values
+
+    def get_api_key_initial_status(self, row_num):
+        row_values = self.get_row_elements_by_number_from_api_keys_table(row_num)
+        initial_status_api_key = row_values[2].text
+        return initial_status_api_key
+
+    def click_switch_status_icon(self, row_num):
+        first_column_values = self.get_row_elements_by_number_from_api_keys_table(row_num)
+        initial_status = self.get_api_key_initial_status(row_num)
+        if initial_status == "Inactive":
+            switch_status = first_column_values[3].find_element(*ApiKeysLocator.SWITCH_STATUS_TO_ACTIVE)
+            switch_status.click()
+            alert = self.driver.switch_to.alert
+            alert.accept()
+        else:
+            switch_status = first_column_values[3].find_element(*ApiKeysLocator.SWITCH_STATUS_TO_INACTIVE)
+            switch_status.click()
+            alert = self.driver.switch_to.alert
+            alert.accept()
+
     def check_default_status_generated_api_key(self):
-        last_row_elements = self.get_last_row_elements_from_api_keys_able()
+        last_row_elements = self.get_last_row_elements_from_api_keys_table()
         new_generated_api_key_status = last_row_elements[2].text
         assert new_generated_api_key_status == "Active", "The default status of the new API key does not  'Active'"
 
@@ -111,3 +134,7 @@ class ApiKeysPage(BasePage):
         for i in range(1, length_api_keys_table + 1):
             status_display = self.element_is_displayed(ApiKeysLocator.status_api_key(self, i))
             assert status_display, f"The API key status does not display in the row {i}. "
+
+    def check_is_status_api_key_changed(self, initial_status_api_key, row_num):
+        current_status = self.get_api_key_initial_status(row_num)
+        assert current_status != initial_status_api_key, "API Key status has not changed"

@@ -1,5 +1,4 @@
 
-
 from pages.API_keys_page import ApiKeysPage
 
 
@@ -10,7 +9,7 @@ class TestApiKey:
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_api_key_tab_active()
 
-    def test_tc_017_01_02_alert_info_is_displayed_after_oening_api_keys_page(self, driver):
+    def test_tc_017_01_02_alert_info_is_displayed_after_opening_api_keys_page(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_alert_info_displayed()
@@ -29,6 +28,14 @@ class TestApiKey:
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_api_keys_status_displayed()
+
+    def test_tc_017_02_02_the_status_of_api_key_is_changed(self, driver):
+        row_num = 1
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        initial_status = api_keys_page.get_api_key_initial_status(row_num)
+        api_keys_page.click_switch_status_icon(row_num)
+        api_keys_page.check_is_status_api_key_changed(initial_status, row_num)
 
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)

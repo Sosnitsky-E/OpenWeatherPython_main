@@ -20,6 +20,10 @@ class ApiKeysLocator:
     API_KEY_TAB_ELEMENTS = By.CSS_SELECTOR, '#myTab li'
     ALERT_INFO = By.CSS_SELECTOR, ".alert-info"
     TABLE_API_KEYS = By.CSS_SELECTOR, ".material_table.api-keys"
+    SWITCH_STATUS_TO_ACTIVE = By.CSS_SELECTOR, '.fa.fa-toggle-off'
+    SWITCH_STATUS_TO_INACTIVE = By.CSS_SELECTOR, '.fa.fa-toggle-on'
+
+
 
     def row_elements(self, row_number):
         t_r = By.XPATH, f"//tbody/tr[{row_number}]/td"
