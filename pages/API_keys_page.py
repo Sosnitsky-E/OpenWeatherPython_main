@@ -1,3 +1,5 @@
+from selenium.webdriver.common.by import By
+
 from pages.base_page import BasePage
 from locators.API_keys_locators import ApiKeysLocator
 from pages.sign_in_page import SignInPage
@@ -138,3 +140,9 @@ class ApiKeysPage(BasePage):
     def check_is_status_api_key_changed(self, initial_status_api_key, row_num):
         current_status = self.get_api_key_initial_status(row_num)
         assert current_status != initial_status_api_key, "API Key status has not changed"
+
+    def check_is_status_api_key_red(self, row_num):
+        row_values = self.get_row_elements_by_number_from_api_keys_table(row_num)
+        color = row_values[2].find_element(*ApiKeysLocator.STATUS_COLOR).value_of_css_property("color")
+        assert "255, 0, 0," in color, "The inactive API key status does not red"
+

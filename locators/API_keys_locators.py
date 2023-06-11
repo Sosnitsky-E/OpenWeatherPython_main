@@ -22,6 +22,7 @@ class ApiKeysLocator:
     TABLE_API_KEYS = By.CSS_SELECTOR, ".material_table.api-keys"
     SWITCH_STATUS_TO_ACTIVE = By.CSS_SELECTOR, '.fa.fa-toggle-off'
     SWITCH_STATUS_TO_INACTIVE = By.CSS_SELECTOR, '.fa.fa-toggle-on'
+    STATUS_COLOR = By.CSS_SELECTOR, "span:nth-child(1)"
 
 
 
