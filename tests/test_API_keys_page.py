@@ -1,4 +1,3 @@
-
 from pages.API_keys_page import ApiKeysPage
 
 
@@ -45,6 +44,15 @@ class TestApiKey:
         if initial_status == "Active":
             api_keys_page.click_switch_status_icon(row_num)
         api_keys_page.check_is_status_api_key_red(row_num)
+
+    def test_tc_017_02_08_the_active_status_of_api_key_is_black(self, driver):
+        row_num = 1
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        initial_status = api_keys_page.get_api_key_initial_status(row_num)
+        if initial_status == "Inactive":
+            api_keys_page.click_switch_status_icon(row_num)
+        api_keys_page.check_is_status_api_key_black(row_num)
 
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
