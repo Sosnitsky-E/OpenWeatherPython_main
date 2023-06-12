@@ -146,3 +146,8 @@ class ApiKeysPage(BasePage):
         color = row_values[2].find_element(*ApiKeysLocator.STATUS_COLOR).value_of_css_property("color")
         assert "255, 0, 0," in color, "The inactive API key status does not red"
 
+    def check_is_status_api_key_black(self, row_num):
+        row_values = self.get_row_elements_by_number_from_api_keys_table(row_num)
+        color = row_values[2].find_element(*ApiKeysLocator.STATUS_COLOR).value_of_css_property("color")
+        assert "72, 72, 74" in color, "The inactive API key status does not black"
+
