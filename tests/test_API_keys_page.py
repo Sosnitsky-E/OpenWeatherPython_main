@@ -45,6 +45,11 @@ class TestApiKey:
             api_keys_page.click_switch_status_icon(row_num)
         api_keys_page.check_is_status_api_key_red(row_num)
 
+    def test_tc_017_02_04_icon_change_status_api_key_is_display(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_is_icon_change_api_key_status_displayed()
+
     def test_tc_017_02_08_the_active_status_of_api_key_is_black(self, driver):
         row_num = 1
         api_keys_page = ApiKeysPage(driver)

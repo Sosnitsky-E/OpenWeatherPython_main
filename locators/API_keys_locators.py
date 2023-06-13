@@ -23,6 +23,7 @@ class ApiKeysLocator:
     SWITCH_STATUS_TO_ACTIVE = By.CSS_SELECTOR, '.fa.fa-toggle-off'
     SWITCH_STATUS_TO_INACTIVE = By.CSS_SELECTOR, '.fa.fa-toggle-on'
     STATUS_COLOR = By.CSS_SELECTOR, "span:nth-child(1)"
+    CHANGE_API_KEY_STATUS_ICON = By.XPATH, "//a[@data-method='put']"
 
 
 

@@ -151,3 +151,6 @@ class ApiKeysPage(BasePage):
         color = row_values[2].find_element(*ApiKeysLocator.STATUS_COLOR).value_of_css_property("color")
         assert "72, 72, 74" in color, "The inactive API key status does not black"
 
+    def check_is_icon_change_api_key_status_displayed(self):
+        change_status_icons = self.elements_are_visible(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
+        assert change_status_icons, "One of the change API key status icon does not display in the table"
