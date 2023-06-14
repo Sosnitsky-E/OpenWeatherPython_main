@@ -154,3 +154,12 @@ class ApiKeysPage(BasePage):
     def check_is_icon_change_api_key_status_displayed(self):
         change_status_icons = self.elements_are_visible(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
         assert change_status_icons, "One of the change API key status icon does not display in the table"
+
+    def check_is_icon_deactivate_api_key_displayed(self):
+        length_api_keys_table = self.get_length_of_table_api_keys()
+        for i in range(1, length_api_keys_table + 1):
+            initial_status = self.get_api_key_initial_status(i)
+            if initial_status == "Inactive":
+                self.click_switch_status_icon(i)
+            deactivate_api_key_displayed = self.element_is_displayed(ApiKeysLocator.SWITCH_STATUS_TO_INACTIVE)
+            assert deactivate_api_key_displayed, "The icon Deactivate API key does not displayed"
