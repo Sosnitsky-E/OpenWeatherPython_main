@@ -170,3 +170,7 @@ class ApiKeysPage(BasePage):
                 self.click_switch_status_icon(i)
             deactivate_api_key_displayed = self.element_is_displayed(ApiKeysLocator.SWITCH_STATUS_TO_ACTIVE)
             assert deactivate_api_key_displayed, "The icon Deactivate API key does not displayed"
+
+    def check_change_api_key_status_icon_is_clickable(self):
+        change_api_key_status_icon_clickable = self.element_is_clickable(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
+        assert change_api_key_status_icon_clickable, "The icon for changing API key status is not clickable"

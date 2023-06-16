@@ -55,6 +55,11 @@ class TestApiKey:
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_icon_deactivate_api_key_displayed()
 
+    def test_tc_017_02_06_the_icon_change_api_key_status_is_clickable(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_change_api_key_status_icon_is_clickable()
+
     def test_tc_017_02_09_the_icon_activate_api_key_is_displayed(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
