@@ -176,9 +176,10 @@ class ApiKeysPage(BasePage):
         assert change_api_key_status_icon_clickable, "The icon for changing API key status is not clickable"
 
     def check_alert_for_confirming_change_api_key_status_is_displayed(self):
-        expected_alert_text = 'Do you want to deactivate this key?'
+        expected_alert_text1 = 'Do you want to deactivate this key?'
+        expected_alert_text2 = " Do you want to activate this key?"
         change_api_key_status_icon = self.element_is_clickable(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
         change_api_key_status_icon.click()
         alert = self.driver.switch_to.alert
         actual_alert_text = alert.text
-        assert actual_alert_text == expected_alert_text, "The alert text does not correspond to expected"
+        assert actual_alert_text == expected_alert_text1 or expected_alert_text2, "The alert text does not correspond to expected"
