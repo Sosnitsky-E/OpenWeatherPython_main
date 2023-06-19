@@ -11,7 +11,7 @@ class TestApiKey:
     def test_tc_017_01_02_alert_info_is_displayed_after_opening_api_keys_page(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
-        api_keys_page.check_is_alert_info_displayed()
+        api_keys_page.check_is_main_alert_info_displayed()
 
     def test_tc_017_01_03_create_api_key_module_is_displayed(self, driver):
         api_keys_page = ApiKeysPage(driver)
@@ -60,11 +60,6 @@ class TestApiKey:
         api_keys_page.open_api_keys_page()
         api_keys_page.check_change_api_key_status_icon_is_clickable()
 
-    def test_tc_017_02_09_the_icon_activate_api_key_is_displayed(self, driver):
-        api_keys_page = ApiKeysPage(driver)
-        api_keys_page.open_api_keys_page()
-        api_keys_page.check_is_icon_activate_api_key_displayed()
-
     def test_tc_017_02_08_the_active_status_of_api_key_is_black(self, driver):
         row_num = 1
         api_keys_page = ApiKeysPage(driver)
@@ -73,6 +68,18 @@ class TestApiKey:
         if initial_status == "Inactive":
             api_keys_page.click_switch_status_icon(row_num)
         api_keys_page.check_is_status_api_key_black(row_num)
+
+    def test_tc_017_02_09_the_icon_activate_api_key_is_displayed(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_is_icon_activate_api_key_displayed()
+
+    def test_tc_017_02_10_the_alert_for_changing_api_key_status_is_displayed(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_alert_for_confirming_change_api_key_status_is_displayed()
+
+
 
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
