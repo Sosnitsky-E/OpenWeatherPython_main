@@ -177,9 +177,23 @@ class ApiKeysPage(BasePage):
 
     def check_alert_for_confirming_change_api_key_status_is_displayed(self):
         expected_alert_text1 = 'Do you want to deactivate this key?'
-        expected_alert_text2 = " Do you want to activate this key?"
+        expected_alert_text2 = "Do you want to activate this key?"
         change_api_key_status_icon = self.element_is_clickable(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
         change_api_key_status_icon.click()
         alert = self.driver.switch_to.alert
         actual_alert_text = alert.text
-        assert actual_alert_text == expected_alert_text1 or expected_alert_text2, "The alert text does not correspond to expected"
+        assert actual_alert_text == expected_alert_text1 or expected_alert_text2,\
+            "The alert text does not correspond to expected"
+
+    def check_is_notice_API_key_status_change_is_displayed(self):
+        expected_notice1 = 'API key was activated successfully'
+        expected_notice2 = "API key was deactivated successfully"
+        change_api_key_status_icon = self.element_is_clickable(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
+        change_api_key_status_icon.click()
+        alert = self.driver.switch_to.alert
+        alert.accept()
+        actual_notice_api_key_statis_changed = self.element_is_visible(ApiKeysLocator.NOTICE_STATUS_API_KEY_CHANGED)\
+            .text
+        assert actual_notice_api_key_statis_changed == expected_notice2 or expected_notice1, "Incorrect text for the" \
+                                                                                             " Change API Key status" \
+                                                                                             " notice"
