@@ -85,6 +85,11 @@ class TestApiKey:
         api_keys_page.open_api_keys_page()
         api_keys_page.check_alert_for_confirming_change_api_key_status_is_displayed()
 
+    def test_tc_017_02_11_the_api_key_status_does_not_changed(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_the_api_key_status_does_not_changed()
+
 
 
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
