@@ -197,3 +197,14 @@ class ApiKeysPage(BasePage):
         assert actual_notice_api_key_statis_changed == expected_notice2 or expected_notice1, "Incorrect text for the" \
                                                                                              " Change API Key status" \
                                                                                              " notice"
+
+    def check_the_api_key_status_does_not_changed(self):
+        initial_status = self.get_api_key_initial_status(1)
+        change_api_key_status_icon = self.element_is_clickable(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
+        change_api_key_status_icon.click()
+        alert = self.driver.switch_to.alert
+        alert.dismiss()
+        actual_api_status = self.get_api_key_initial_status(1)
+        assert actual_api_status == initial_status, "API status was changed after click Cancel button"
+
+
