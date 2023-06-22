@@ -207,4 +207,10 @@ class ApiKeysPage(BasePage):
         actual_api_status = self.get_api_key_initial_status(1)
         assert actual_api_status == initial_status, "API status was changed after click Cancel button"
 
+    def check_if_api_key_name_displayed(self):
+        api_key_name_displayed = self.element_is_displayed(ApiKeysLocator.API_KEY_NAME)
+        assert api_key_name_displayed, "API key name does not displayed"
+
+
+
 
