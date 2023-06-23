@@ -65,7 +65,6 @@ class TestApiKey:
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_notice_API_key_status_change_is_displayed()
 
-
     def test_tc_017_02_08_the_active_status_of_api_key_is_black(self, driver):
         row_num = 1
         api_keys_page = ApiKeysPage(driver)
@@ -95,7 +94,13 @@ class TestApiKey:
         api_keys_page.open_api_keys_page()
         api_keys_page.check_if_api_key_name_displayed()
 
-
+    def test_tc_017_03_02_the_new_api_key_name_is_displayed(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.open_popup_rename_api_key()
+        api_keys_page.enter_new_api_name("Changed API key name")
+        api_keys_page.click_save_new_api_key_name_button()
+        api_keys_page.check_if_api_key_name_displayed()
 
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
