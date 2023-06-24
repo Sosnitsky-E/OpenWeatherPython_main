@@ -211,6 +211,11 @@ class ApiKeysPage(BasePage):
         api_key_name_displayed = self.element_is_displayed(ApiKeysLocator.API_KEY_NAME)
         assert api_key_name_displayed, "API key name does not displayed"
 
+    def check_if_edit_api_key_icon_is_displayed(self):
+        edit_api_key_icon = self.element_is_displayed(ApiKeysLocator.EDIT_API_KEY_ICON)
+        assert edit_api_key_icon, "The icon for editing API key name does not displayed."
+
+
 
 
 
