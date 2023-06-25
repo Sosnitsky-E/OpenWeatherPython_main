@@ -1,3 +1,5 @@
+import time
+
 from pages.base_page import BasePage
 from locators.API_keys_locators import ApiKeysLocator
 from pages.sign_in_page import SignInPage
@@ -182,7 +184,7 @@ class ApiKeysPage(BasePage):
         change_api_key_status_icon.click()
         alert = self.driver.switch_to.alert
         actual_alert_text = alert.text
-        assert actual_alert_text == expected_alert_text1 or expected_alert_text2,\
+        assert actual_alert_text == expected_alert_text1 or expected_alert_text2, \
             "The alert text does not correspond to expected"
 
     def check_is_notice_API_key_status_change_is_displayed(self):
@@ -192,7 +194,7 @@ class ApiKeysPage(BasePage):
         change_api_key_status_icon.click()
         alert = self.driver.switch_to.alert
         alert.accept()
-        actual_notice_api_key_statis_changed = self.element_is_visible(ApiKeysLocator.NOTICE_STATUS_API_KEY_CHANGED)\
+        actual_notice_api_key_statis_changed = self.element_is_visible(ApiKeysLocator.NOTICE_STATUS_API_KEY_CHANGED) \
             .text
         assert actual_notice_api_key_statis_changed == expected_notice2 or expected_notice1, "Incorrect text for the" \
                                                                                              " Change API Key status" \
@@ -215,7 +217,8 @@ class ApiKeysPage(BasePage):
         edit_api_key_icon = self.element_is_displayed(ApiKeysLocator.EDIT_API_KEY_ICON)
         assert edit_api_key_icon, "The icon for editing API key name does not displayed."
 
-
-
-
-
+    def is_displayed_modal_window_for_change_api_key_name(self):
+        modal_window_for_change_api_key_name = self.element_is_visible(ApiKeysLocator.MODAL_WINDOW_EDIT_API_KEY_NAME,
+                                                                       10)
+        assert modal_window_for_change_api_key_name.text == "Edit API key name",\
+            "The modal window Edit API key name does not displayed"
