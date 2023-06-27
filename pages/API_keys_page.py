@@ -20,10 +20,8 @@ class ApiKeysPage(BasePage):
         edit_api_key_icon.click()
         self.driver.switch_to.default_content()
 
-    def enter_new_api_name(self, new_api_name):
-        api_key_field = self.element_is_clickable(ApiKeysLocator.API_KEY_FIELD, 10)
-        api_key_field.click()
-        api_key_field.clear()
+    def enter_new_api_key_name(self, new_api_name):
+        api_key_field = self.clear_the_field(ApiKeysLocator.API_KEY_FIELD)
         api_key_field.send_keys(new_api_name)
 
     def click_save_new_api_key_name_button(self):
@@ -187,7 +185,7 @@ class ApiKeysPage(BasePage):
         assert actual_alert_text == expected_alert_text1 or expected_alert_text2, \
             "The alert text does not correspond to expected"
 
-    def check_is_notice_API_key_status_change_is_displayed(self):
+    def check_is_notice_API_key_status_changed_is_displayed(self):
         expected_notice1 = 'API key was activated successfully'
         expected_notice2 = "API key was deactivated successfully"
         change_api_key_status_icon = self.element_is_clickable(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
@@ -220,5 +218,10 @@ class ApiKeysPage(BasePage):
     def is_displayed_modal_window_for_change_api_key_name(self):
         modal_window_for_change_api_key_name = self.element_is_visible(ApiKeysLocator.MODAL_WINDOW_EDIT_API_KEY_NAME,
                                                                        10)
-        assert modal_window_for_change_api_key_name.text == "Edit API key name",\
+        assert modal_window_for_change_api_key_name.text == "Edit API key name", \
             "The modal window Edit API key name does not displayed"
+
+    def check_is_displayed_field_api_key_name(self):
+        assert self.element_is_displayed(ApiKeysLocator.API_KEY_FIELD), "The field 'API key name' does not display"
+
+

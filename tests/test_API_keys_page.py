@@ -63,7 +63,7 @@ class TestApiKey:
     def test_tc_017_02_07_notice_API_key_status_change_is_displayed(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
-        api_keys_page.check_is_notice_API_key_status_change_is_displayed()
+        api_keys_page.check_is_notice_API_key_status_changed_is_displayed()
 
     def test_tc_017_02_08_the_active_status_of_api_key_is_black(self, driver):
         row_num = 1
@@ -112,6 +112,12 @@ class TestApiKey:
         api_keys_page.open_api_keys_page()
         api_keys_page.open_popup_rename_api_key()
         api_keys_page.is_displayed_modal_window_for_change_api_key_name()
+
+    def test_tc_017_03_05_the_field_api_key_name_displayed_in_modal_window(self, driver):
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.open_popup_rename_api_key()
+        api_keys_page.check_is_displayed_field_api_key_name()
 
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
