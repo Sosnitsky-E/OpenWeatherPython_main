@@ -149,3 +149,8 @@ class BasePage:
 
     def title_check(self, text=None):
         assert self.driver.title == text, "Title is NOT correct"
+
+    def clear_the_field(self, field_element, timeout=5):
+        field = wait(self.driver, timeout).until(EC.element_to_be_clickable(field_element))
+        field.clear()
+        return field
