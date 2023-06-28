@@ -1,3 +1,5 @@
+import allure
+from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
@@ -154,3 +156,7 @@ class BasePage:
         field = wait(self.driver, timeout).until(EC.element_to_be_clickable(field_element))
         field.clear()
         return field
+
+    def get_screenshot_allure(self, screenshot_name):
+        with allure.step("Make a snapshot"):
+            allure.attach(self.driver.get_screenshot_as_png(), name=screenshot_name, attachment_type=AttachmentType.PNG)
