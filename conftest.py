@@ -18,6 +18,8 @@ email_input = (By.CSS_SELECTOR, '#user_email')
 password_input = (By.CSS_SELECTOR, '#user_password')
 submit_button = (By.CSS_SELECTOR, "input[value='Submit']")
 sign_in_link = (By.CSS_SELECTOR, '.user-li a')
+
+
 @pytest.fixture(scope='function')
 def driver():
     print('\nstart browser...')
@@ -35,6 +37,7 @@ def driver():
     print('\nquit browser...')
     driver.quit()
 
+
 @pytest.fixture()
 def open_and_load_main_page(driver, wait):
     driver.get(URL)
@@ -45,6 +48,7 @@ def open_and_load_main_page(driver, wait):
 def wait(driver):
     wait = WebDriverWait(driver, 15)
     yield wait
+
 
 @pytest.fixture()
 def sign_in(driver):
@@ -68,6 +72,7 @@ def pytest_runtest_makereport(item, call):
                 allure.attach(driver.page_source, name="HTML source", attachment_type=allure.attachment_type.HTML)
             except Exception as e:
                 print(f"Failed to take screenshot: {e}")
+
 
 def pytest_sessionstart(session):
     allure_report_dir = "allure-results"

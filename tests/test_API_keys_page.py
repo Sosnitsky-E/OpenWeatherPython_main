@@ -119,6 +119,15 @@ class TestApiKey:
         api_keys_page.open_popup_rename_api_key()
         api_keys_page.check_is_displayed_field_api_key_name()
 
+    def test_tc_017_03_06_the_new_api_key_name_is_saved(self, driver):
+        new_api_key_name = "API key name save"
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.open_popup_rename_api_key()
+        api_keys_page.enter_new_api_key_name(new_api_key_name)
+        api_keys_page.click_save_new_api_key_name_button()
+        api_keys_page.check_is_saved_new_api_key_name(new_api_key_name)
+
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()

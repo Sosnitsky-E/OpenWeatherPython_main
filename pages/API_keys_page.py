@@ -73,20 +73,20 @@ class ApiKeysPage(BasePage):
 
     def check_module_title_create_api_key_is_visible(self):
         module_create_api_key = self.driver.find_element(*ApiKeysLocator.MODULE_API_KEY_CREATE)
-        assert module_create_api_key.is_displayed(), "module with title “Create key“ does not visible"
+        assert module_create_api_key.is_displayed(), "module with title “Create key“ is not visible"
 
     def check_limit_of_api_key_name(self):
         api_name_limit = 20
         actual_length_of_api_key_name = len(self.api_key_name_of_first_row())
-        assert actual_length_of_api_key_name == api_name_limit, "The limit of API key name does not correspond to " \
+        assert actual_length_of_api_key_name == api_name_limit, "The limit of API key name is not correspond to " \
                                                                 "expected limit"
 
     def check_limit_of_created_api_key_name(self):
         expected_api_name_limit = 20
         created_api_key_name = self.driver.find_element(*ApiKeysLocator.NEW_API_KEY_NAME)
         actual_api_name_limit = int(created_api_key_name.get_attribute('maxlength'))
-        assert actual_api_name_limit == expected_api_name_limit, "The limit of created API key name does not correspond to " \
-                                                                 "requirements"
+        assert actual_api_name_limit == expected_api_name_limit, "The limit of created API key name" \
+                                                                 " is not correspond to requirements"
 
     def check_create_api_key_field_is_required(self):
         new_api_key_name_field = self.driver.find_element(*ApiKeysLocator.NEW_API_KEY_NAME)
@@ -95,22 +95,22 @@ class ApiKeysPage(BasePage):
 
     def check_is_generate_button_clickable(self):
         is_generate_button_clickable = self.element_is_clickable(ApiKeysLocator.GENERATE_BUTTON)
-        assert is_generate_button_clickable, "The button does not clickable"
+        assert is_generate_button_clickable, "The button is not clickable"
 
     def check_is_api_key_generated(self, initial_table_length):
         actual_api_keys_table_length = self.get_length_of_table_api_keys()
-        assert actual_api_keys_table_length == initial_table_length + 1, "The new API key does not generated"
+        assert actual_api_keys_table_length == initial_table_length + 1, "The new API key is not generated"
 
     def check_is_success_generate_notice_displayed(self):
         expected_new_api_key_notice_text = 'API key was created successfully'
         actual_new_api_key_notice_text = self.driver.find_element(*ApiKeysLocator.NOTICE_MESSAGE).text
         assert actual_new_api_key_notice_text == expected_new_api_key_notice_text, \
-            "The success generate API key notice text does not displayed"
+            "The success generate API key notice text is not displayed"
 
     def check_default_status_generated_api_key(self):
         last_row_elements = self.get_last_row_elements_from_api_keys_table()
         new_generated_api_key_status = last_row_elements[2].text
-        assert new_generated_api_key_status == "Active", "The default status of the new API key does not  'Active'"
+        assert new_generated_api_key_status == "Active", "The default status of the new API key is not  'Active'"
 
     def check_is_api_key_tab_active(self):
         api_key_tab_elements = self.driver.find_elements(*ApiKeysLocator.API_KEY_TAB_ELEMENTS)
@@ -119,15 +119,15 @@ class ApiKeysPage(BasePage):
 
     def check_is_main_alert_info_displayed(self):
         alert_info_displayed = self.element_is_displayed(ApiKeysLocator.ALERT_INFO)
-        assert alert_info_displayed, "Alert info does not displayed"
+        assert alert_info_displayed, "Alert info is not displayed"
 
     def check_module_create_api_key_displayed(self):
         module_create_api_key = self.element_is_displayed(ApiKeysLocator.MODULE_API_KEY_CREATE)
-        assert module_create_api_key, "The module 'Create API key' does not displayed"
+        assert module_create_api_key, "The module 'Create API key' is not displayed"
 
     def check_is_displayed_api_keys_list(self):
         api_keys_list = self.element_is_displayed(ApiKeysLocator.TABLE_API_KEYS)
-        assert api_keys_list, "The API keys list does not displayed"
+        assert api_keys_list, "The API keys list is not displayed"
 
     def check_is_api_keys_status_displayed(self):
         length_api_keys_table = self.get_length_of_table_api_keys()
@@ -142,16 +142,16 @@ class ApiKeysPage(BasePage):
     def check_is_status_api_key_red(self, row_num):
         row_values = self.get_row_elements_by_number_from_api_keys_table(row_num)
         color = row_values[2].find_element(*ApiKeysLocator.STATUS_COLOR).value_of_css_property("color")
-        assert "255, 0, 0," in color, "The inactive API key status does not red"
+        assert "255, 0, 0," in color, "The inactive API key status is not red"
 
     def check_is_status_api_key_black(self, row_num):
         row_values = self.get_row_elements_by_number_from_api_keys_table(row_num)
         color = row_values[2].find_element(*ApiKeysLocator.STATUS_COLOR).value_of_css_property("color")
-        assert "72, 72, 74" in color, "The inactive API key status does not black"
+        assert "72, 72, 74" in color, "The inactive API key status is not black"
 
     def check_is_icon_change_api_key_status_displayed(self):
         change_status_icons = self.elements_are_visible(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
-        assert change_status_icons, "One of the change API key status icon does not display in the table"
+        assert change_status_icons, "One of the change API key status icon is not display in the table"
 
     def check_is_icon_deactivate_api_key_displayed(self):
         length_api_keys_table = self.get_length_of_table_api_keys()
@@ -160,7 +160,7 @@ class ApiKeysPage(BasePage):
             if initial_status == "Inactive":
                 self.click_switch_status_icon(i)
             deactivate_api_key_displayed = self.element_is_displayed(ApiKeysLocator.SWITCH_STATUS_TO_INACTIVE)
-            assert deactivate_api_key_displayed, "The icon Deactivate API key does not displayed"
+            assert deactivate_api_key_displayed, "The icon Deactivate API key is not displayed"
 
     def check_is_icon_activate_api_key_displayed(self):
         length_api_keys_table = self.get_length_of_table_api_keys()
@@ -169,7 +169,7 @@ class ApiKeysPage(BasePage):
             if initial_status == "Active":
                 self.click_switch_status_icon(i)
             deactivate_api_key_displayed = self.element_is_displayed(ApiKeysLocator.SWITCH_STATUS_TO_ACTIVE)
-            assert deactivate_api_key_displayed, "The icon Deactivate API key does not displayed"
+            assert deactivate_api_key_displayed, "The icon Deactivate API key is not displayed"
 
     def check_change_api_key_status_icon_is_clickable(self):
         change_api_key_status_icon_clickable = self.element_is_clickable(ApiKeysLocator.CHANGE_API_KEY_STATUS_ICON)
@@ -183,7 +183,7 @@ class ApiKeysPage(BasePage):
         alert = self.driver.switch_to.alert
         actual_alert_text = alert.text
         assert actual_alert_text == expected_alert_text1 or expected_alert_text2, \
-            "The alert text does not correspond to expected"
+            "The alert text is not correspond to expected"
 
     def check_is_notice_API_key_status_changed_is_displayed(self):
         expected_notice1 = 'API key was activated successfully'
@@ -209,19 +209,24 @@ class ApiKeysPage(BasePage):
 
     def check_if_api_key_name_displayed(self):
         api_key_name_displayed = self.element_is_displayed(ApiKeysLocator.API_KEY_NAME)
-        assert api_key_name_displayed, "API key name does not displayed"
+        assert api_key_name_displayed, "API key name is not displayed"
 
     def check_if_edit_api_key_icon_is_displayed(self):
         edit_api_key_icon = self.element_is_displayed(ApiKeysLocator.EDIT_API_KEY_ICON)
-        assert edit_api_key_icon, "The icon for editing API key name does not displayed."
+        assert edit_api_key_icon, "The icon for editing API key name is not displayed."
 
     def is_displayed_modal_window_for_change_api_key_name(self):
         modal_window_for_change_api_key_name = self.element_is_visible(ApiKeysLocator.MODAL_WINDOW_EDIT_API_KEY_NAME,
                                                                        10)
         assert modal_window_for_change_api_key_name.text == "Edit API key name", \
-            "The modal window Edit API key name does not displayed"
+            "The modal window Edit API key name is not displayed"
 
     def check_is_displayed_field_api_key_name(self):
-        assert self.element_is_displayed(ApiKeysLocator.API_KEY_FIELD), "The field 'API key name' does not display"
+        assert self.element_is_displayed(ApiKeysLocator.API_KEY_FIELD), "The field 'API key name' is not display"
+
+    def check_is_saved_new_api_key_name(self, api_key_name):
+        new_api_key_name = self.api_key_name_of_first_row()
+        assert new_api_key_name == api_key_name, "The entered API key name is not saved."
+
 
 
