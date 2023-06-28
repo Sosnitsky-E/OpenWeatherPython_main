@@ -1,34 +1,71 @@
+import allure
+from allure_commons.types import AttachmentType
+
 from pages.API_keys_page import ApiKeysPage
 
 
 class TestApiKey:
 
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @allure.story("US_017.01")
+    @allure.feature("Open page API key")
     def test_tc_017_01_01_tab_api_keys_is_active(self, driver):
+        """
+        In this test, we check that when you open the API Keys tab, it is marked as active with an orange underline.
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
+        api_keys_page.get_screenshot_allure("Open API page")
         api_keys_page.check_is_api_key_tab_active()
 
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @allure.story("US_017.01")
+    @allure.feature("Open page API key")
     def test_tc_017_01_02_alert_info_is_displayed_after_opening_api_keys_page(self, driver):
+        """
+        In this test case, it is checked that when you open the API Keys tab, a notice message that you have
+         the ability to generate the necessary number of keys is displayed.
+         """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_main_alert_info_displayed()
 
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.story("US_017.01")
+    @allure.feature("Open page API key")
     def test_tc_017_01_03_create_api_key_module_is_displayed(self, driver):
+        """
+        In this test case, it is checked that the module for creating a new API key is displayed
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_module_create_api_key_displayed()
 
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story("US_017.01")
+    @allure.feature("Open page API key")
     def test_tc_017_01_04_api_keys_list_is_display(self, driver):
+        """
+        In this test case, it is checked that the list of all created API keys is displayed
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_displayed_api_keys_list()
 
+    @allure.severity(allure.severity_level.NORMAL)
     def test_tc_017_02_01_api_keys_status_are_displayed(self, driver):
+        """
+            In this test case, it is checked that the initial status of API key is displayed
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_api_keys_status_displayed()
 
     def test_tc_017_02_02_the_status_of_api_key_is_changed(self, driver):
+        """
+        In this test case, it is checked that the status of the API key changes after clicking the
+        'Change API key status' icon.
+        """
         row_num = 1
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
@@ -37,6 +74,9 @@ class TestApiKey:
         api_keys_page.check_is_status_api_key_changed(initial_status, row_num)
 
     def test_tc_017_02_03_the_inactive_status_of_api_key_is_red(self, driver):
+        """
+        In this test case, it is checked that the color of the API key's inactive status is red.
+        """
         row_num = 1
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
@@ -46,26 +86,42 @@ class TestApiKey:
         api_keys_page.check_is_status_api_key_red(row_num)
 
     def test_tc_017_02_04_icon_change_status_api_key_is_display(self, driver):
+        """
+        In this test case, it is checked that the icon 'Change status API key' is displayed.
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_icon_change_api_key_status_displayed()
 
     def test_tc_017_02_05_the_icon_deactivate_api_key_is_displayed(self, driver):
+        """
+        In this test case , it is checked that the icon  'Deactivate API key' is displayed.
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_icon_deactivate_api_key_displayed()
 
     def test_tc_017_02_06_the_icon_change_api_key_status_is_clickable(self, driver):
+        """
+        In this test case, it is checked that the icon 'Change status API key' is clickable.
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_change_api_key_status_icon_is_clickable()
 
     def test_tc_017_02_07_notice_API_key_status_change_is_displayed(self, driver):
+        """
+       In this test case, it is checked that when you change the API Keys status,
+        a notice message that the API key status has been changed successfully is displayed.
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_notice_API_key_status_changed_is_displayed()
 
     def test_tc_017_02_08_the_active_status_of_api_key_is_black(self, driver):
+        """
+        In this test case, it is checked that the color of the API key's active status is black.
+        """
         row_num = 1
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
@@ -75,16 +131,27 @@ class TestApiKey:
         api_keys_page.check_is_status_api_key_black(row_num)
 
     def test_tc_017_02_09_the_icon_activate_api_key_is_displayed(self, driver):
+        """
+        In this test case , it is checked that the icon  'Deactivate API key' is displayed.
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_is_icon_activate_api_key_displayed()
 
     def test_tc_017_02_10_the_alert_for_changing_api_key_status_is_displayed(self, driver):
+        """
+        In this test case , it is checked that the alert for confirming the change of API key status is displayed
+        after clicking the 'Change API key status' icon.
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_alert_for_confirming_change_api_key_status_is_displayed()
 
     def test_tc_017_02_11_the_api_key_status_does_not_changed(self, driver):
+        """
+        In this test case, it is checked that the API key status does not change when clicking the 'Cancel' button
+        in the alert.
+        """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.check_the_api_key_status_does_not_changed()
@@ -163,7 +230,7 @@ class TestApiKey:
         api_keys_page.click_generate_api_key_name_button()
         api_keys_page.check_is_success_generate_notice_displayed()
 
-    def test_tc_017_04_06_new_api_key_default_status_is_active(self, driver):
+    def test_tc_017_04_07_new_api_key_default_status_is_active(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
         api_keys_page.enter_created_api_key_name("Default status check name ")
