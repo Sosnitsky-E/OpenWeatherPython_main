@@ -28,6 +28,10 @@ class ApiKeysPage(BasePage):
         save_api_key_name_button = self.driver.find_element(*ApiKeysLocator.SAVE_NEW_API_NAME_BUTTON)
         save_api_key_name_button.click()
 
+    def click_cancel_new_api_key_name_button(self):
+        cancel_button = self.element_is_clickable(ApiKeysLocator.CANCEL_NEW_API_NAME_BUTTON)
+        cancel_button.click()
+
     def api_key_name_of_first_row(self):
         return self.driver.find_element(*ApiKeysLocator.API_KEY_NAME_FIRST_ROW).text
 
@@ -228,5 +232,6 @@ class ApiKeysPage(BasePage):
         new_api_key_name = self.api_key_name_of_first_row()
         assert new_api_key_name == api_key_name, "The entered API key name is not saved."
 
-
-
+    def check_if_api_key_name_is_not_changed(self, api_key_name):
+        expected_api_key_name = self.api_key_name_of_first_row()
+        assert expected_api_key_name == api_key_name, "The API key name changes after clicking the 'Cancel' button."

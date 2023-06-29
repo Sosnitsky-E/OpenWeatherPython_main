@@ -25,7 +25,8 @@ class ApiKeysLocator:
     STATUS_COLOR = By.CSS_SELECTOR, "span:nth-child(1)"
     CHANGE_API_KEY_STATUS_ICON = By.XPATH, "//a[@data-method='put']"
     NOTICE_STATUS_API_KEY_CHANGED = By.CSS_SELECTOR, '.panel-body'
-    MODAL_WINDOW_EDIT_API_KEY_NAME= By.CSS_SELECTOR, "div[class='pop-up-header'] h3"
+    MODAL_WINDOW_EDIT_API_KEY_NAME = By.CSS_SELECTOR, "div[class='pop-up-header'] h3"
+    CANCEL_NEW_API_NAME_BUTTON = By.CSS_SELECTOR, '.pop-up-footer .transparent'
 
 
 
