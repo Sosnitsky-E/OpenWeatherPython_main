@@ -32,6 +32,10 @@ class ApiKeysPage(BasePage):
         cancel_button = self.element_is_clickable(ApiKeysLocator.CANCEL_NEW_API_NAME_BUTTON)
         cancel_button.click()
 
+    def click_close_icon_of_new_api_key_name_popup(self):
+        cancel_button = self.element_is_clickable(ApiKeysLocator.CLOSE_POPUP_NEW_API_KEY_NAME_ICON)
+        cancel_button.click()
+
     def api_key_name_of_first_row(self):
         return self.driver.find_element(*ApiKeysLocator.API_KEY_NAME_FIRST_ROW).text
 
@@ -219,7 +223,7 @@ class ApiKeysPage(BasePage):
         edit_api_key_icon = self.element_is_displayed(ApiKeysLocator.EDIT_API_KEY_ICON)
         assert edit_api_key_icon, "The icon for editing API key name is not displayed."
 
-    def is_displayed_modal_window_for_change_api_key_name(self):
+    def check_is_displayed_modal_window_for_change_api_key_name(self):
         modal_window_for_change_api_key_name = self.element_is_visible(ApiKeysLocator.MODAL_WINDOW_EDIT_API_KEY_NAME,
                                                                        10)
         assert modal_window_for_change_api_key_name.text == "Edit API key name", \
@@ -232,6 +236,10 @@ class ApiKeysPage(BasePage):
         new_api_key_name = self.api_key_name_of_first_row()
         assert new_api_key_name == api_key_name, "The entered API key name is not saved."
 
-    def check_if_api_key_name_is_not_changed(self, api_key_name):
+    def check_if_api_key_name_is_not_changed_clicking_cancel_button(self, api_key_name):
         expected_api_key_name = self.api_key_name_of_first_row()
         assert expected_api_key_name == api_key_name, "The API key name changes after clicking the 'Cancel' button."
+        
+    def check_if_api_key_name_is_not_changed_clicking_close_icon(self, api_key_name):
+        expected_api_key_name = self.api_key_name_of_first_row()
+        assert expected_api_key_name == api_key_name, "The API key name changes after clicking the 'Close' icon."
