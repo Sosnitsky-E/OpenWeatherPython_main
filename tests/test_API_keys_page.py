@@ -227,6 +227,22 @@ class TestApiKey:
         api_keys_page.click_close_icon_of_new_api_key_name_popup()
         api_keys_page.check_if_api_key_name_is_not_changed_clicking_close_icon(initial_api_key_name)
 
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @allure.story("US_017.03")
+    @allure.feature("API key name change")
+    def test_tc_017_03_09_the_api_key_name_is_not_changed_if_field_empty(self, driver):
+        """
+        In this test case, we are checking whether the API key name remains unchanged when
+         the user clears the "New API key name" field and clicks the "Save" button.
+        """
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        initial_api_key_name = api_keys_page.api_key_name_of_first_row()
+        api_keys_page.open_popup_rename_api_key()
+        api_keys_page.clear_new_api_key_name_field()
+        api_keys_page.click_save_new_api_key_name_button()
+        api_keys_page.check_api_key_name_remains_unchanged_if_new_name_is_not_entered(initial_api_key_name)
+
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
