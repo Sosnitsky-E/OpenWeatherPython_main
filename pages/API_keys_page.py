@@ -20,6 +20,9 @@ class ApiKeysPage(BasePage):
         edit_api_key_icon.click()
         self.driver.switch_to.default_content()
 
+    def clear_new_api_key_name_field(self):
+        self.clear_the_field(ApiKeysLocator.API_KEY_FIELD)
+
     def enter_new_api_key_name(self, new_api_name):
         api_key_field = self.clear_the_field(ApiKeysLocator.API_KEY_FIELD)
         api_key_field.send_keys(new_api_name)
@@ -243,3 +246,8 @@ class ApiKeysPage(BasePage):
     def check_if_api_key_name_is_not_changed_clicking_close_icon(self, api_key_name):
         expected_api_key_name = self.api_key_name_of_first_row()
         assert expected_api_key_name == api_key_name, "The API key name changes after clicking the 'Close' icon."
+
+    def check_api_key_name_remains_unchanged_if_new_name_is_not_entered(self, api_key_name):
+        expected_api_key_name = self.api_key_name_of_first_row()
+        assert expected_api_key_name == api_key_name, " API key name is changed when the user clears the " \
+                                                      "New API key name field and clicks the Save button."
