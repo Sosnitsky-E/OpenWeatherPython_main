@@ -251,3 +251,7 @@ class ApiKeysPage(BasePage):
         expected_api_key_name = self.api_key_name_of_first_row()
         assert expected_api_key_name == api_key_name, " API key name is changed when the user clears the " \
                                                       "New API key name field and clicks the Save button."
+
+    def check_api_key_name_remains_unchanged_when_new_name_entered_as_spaces(self, api_key_name):
+        expected_api_key_name = self.api_key_name_of_first_row()
+        assert expected_api_key_name == api_key_name, " API key name is changed when the user enter spaces."
