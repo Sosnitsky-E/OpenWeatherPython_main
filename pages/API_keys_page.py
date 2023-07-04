@@ -1,4 +1,4 @@
-import time
+
 
 from pages.base_page import BasePage
 from locators.API_keys_locators import ApiKeysLocator
@@ -86,11 +86,13 @@ class ApiKeysPage(BasePage):
         module_create_api_key = self.driver.find_element(*ApiKeysLocator.MODULE_API_KEY_CREATE)
         assert module_create_api_key.is_displayed(), "module with title “Create key“ is not visible"
 
-    def check_limit_of_api_key_name(self):
-        api_name_limit = 20
-        actual_length_of_api_key_name = len(self.api_key_name_of_first_row())
-        assert actual_length_of_api_key_name == api_name_limit, "The limit of API key name is not correspond to " \
-                                                                "expected limit"
+    def check_limit_of_api_key_name_field(self):
+        api_key_name_field_limit = 20
+        api_key_name_field = self.driver.find_element(*ApiKeysLocator.API_KEY_FIELD)
+        actual_length_of_api_key_name_field = int(api_key_name_field.get_attribute('maxlength'))
+        assert actual_length_of_api_key_name_field == api_key_name_field_limit, "The limit of API key name field  is not correspond to " \
+                                                                "expected limit."
+
 
     def check_limit_of_created_api_key_name(self):
         expected_api_name_limit = 20

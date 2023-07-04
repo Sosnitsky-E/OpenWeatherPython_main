@@ -260,6 +260,19 @@ class TestApiKey:
         api_keys_page.click_save_new_api_key_name_button()
         api_keys_page.check_api_key_name_remains_unchanged_when_new_name_entered_as_spaces(initial_api_key_name)
 
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story("US_017.03")
+    @allure.feature("API key name change")
+    def test_tc_017_03_11_the_new_api_key_name_field_has_limit_20_symbols(self, driver):
+        """
+        In this test case, we are checking whether the API key name field(that in the popup "Edit API key name")
+         has a limit 20 symbols
+        """
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.open_popup_rename_api_key()
+        api_keys_page.check_limit_of_api_key_name_field()
+
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
