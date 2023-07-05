@@ -273,6 +273,22 @@ class TestApiKey:
         api_keys_page.open_popup_rename_api_key()
         api_keys_page.check_limit_of_api_key_name_field()
 
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story("US_017.03")
+    @allure.feature("API key name change")
+    def test_tc_017_03_12_the_notice_that_new_api_key_name_saved_is_displayed(self, driver):
+        """
+         In this test case, we are checking whether the notice indicating the successful editing of the API key name
+          is  displayed.
+        """
+        new_api_key_name = "API key name save"
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.open_popup_rename_api_key()
+        api_keys_page.enter_new_api_key_name(new_api_key_name)
+        api_keys_page.click_save_new_api_key_name_button()
+        api_keys_page.check_is_notice_new_API_key_name_saved_is_displayed()
+
     def test_tc_017_04_01_module_title_create_api_key_is_visible(self, driver):
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
