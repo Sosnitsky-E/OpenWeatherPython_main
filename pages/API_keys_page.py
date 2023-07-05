@@ -1,5 +1,3 @@
-
-
 from pages.base_page import BasePage
 from locators.API_keys_locators import ApiKeysLocator
 from pages.sign_in_page import SignInPage
@@ -90,9 +88,9 @@ class ApiKeysPage(BasePage):
         api_key_name_field_limit = 20
         api_key_name_field = self.driver.find_element(*ApiKeysLocator.API_KEY_FIELD)
         actual_length_of_api_key_name_field = int(api_key_name_field.get_attribute('maxlength'))
-        assert actual_length_of_api_key_name_field == api_key_name_field_limit, "The limit of API key name field  is not correspond to " \
-                                                                "expected limit."
-
+        assert actual_length_of_api_key_name_field == api_key_name_field_limit, "The limit of API key name" \
+                                                                                " field  is not correspond to " \
+                                                                                "expected limit."
 
     def check_limit_of_created_api_key_name(self):
         expected_api_name_limit = 20
@@ -244,7 +242,7 @@ class ApiKeysPage(BasePage):
     def check_if_api_key_name_is_not_changed_clicking_cancel_button(self, api_key_name):
         expected_api_key_name = self.api_key_name_of_first_row()
         assert expected_api_key_name == api_key_name, "The API key name changes after clicking the 'Cancel' button."
-        
+
     def check_if_api_key_name_is_not_changed_clicking_close_icon(self, api_key_name):
         expected_api_key_name = self.api_key_name_of_first_row()
         assert expected_api_key_name == api_key_name, "The API key name changes after clicking the 'Close' icon."
@@ -257,3 +255,9 @@ class ApiKeysPage(BasePage):
     def check_api_key_name_remains_unchanged_when_new_name_entered_as_spaces(self, api_key_name):
         expected_api_key_name = self.api_key_name_of_first_row()
         assert expected_api_key_name == api_key_name, " API key name is changed when the user enter spaces."
+
+    def check_is_notice_new_API_key_name_saved_is_displayed(self):
+        expected_notice = 'API key was edited successfully'
+        actual_notice = self.driver.find_element(*ApiKeysLocator.NOTICE_MESSAGE).text
+        assert actual_notice == expected_notice, "The notice indicating the successful editing of" \
+                                                 " the API key name is not displayed"
