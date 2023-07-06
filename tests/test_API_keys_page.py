@@ -330,3 +330,16 @@ class TestApiKey:
         api_keys_page.enter_created_api_key_name("Default status check name ")
         api_keys_page.click_generate_api_key_name_button()
         api_keys_page.check_default_status_generated_api_key()
+
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story("US_017.05")
+    @allure.feature("Delete API key ")
+    def test_tc_017_05_01_the_icon_delete_api_key_name_is_displayed(self, driver):
+        """
+         In this test case, we are checking whether the icon for  deleting API key is  displayed.
+        """
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.check_delete_api_key_button_is_displayed()
+
+

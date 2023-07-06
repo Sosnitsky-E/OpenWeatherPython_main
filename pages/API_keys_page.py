@@ -261,3 +261,7 @@ class ApiKeysPage(BasePage):
         actual_notice = self.driver.find_element(*ApiKeysLocator.NOTICE_MESSAGE).text
         assert actual_notice == expected_notice, "The notice indicating the successful editing of" \
                                                  " the API key name is not displayed"
+
+    def check_delete_api_key_button_is_displayed(self):
+        assert self.element_is_displayed(ApiKeysLocator.DELETE_API_KEY_ICON), "The icon delete API key is not" \
+                                                                               " displayed."
