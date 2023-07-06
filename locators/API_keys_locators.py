@@ -28,6 +28,7 @@ class ApiKeysLocator:
     MODAL_WINDOW_EDIT_API_KEY_NAME = By.CSS_SELECTOR, "div[class='pop-up-header'] h3"
     CANCEL_NEW_API_NAME_BUTTON = By.CSS_SELECTOR, '.pop-up-footer .transparent'
     CLOSE_POPUP_NEW_API_KEY_NAME_ICON = By.CSS_SELECTOR, "a[data-dismiss='modal']"
+    DELETE_API_KEY_ICON = By.CSS_SELECTOR, '.fa.fa-remove'
 
 
 
