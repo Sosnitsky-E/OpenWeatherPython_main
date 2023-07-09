@@ -1,3 +1,5 @@
+
+
 from pages.base_page import BasePage
 from locators.API_keys_locators import ApiKeysLocator
 from pages.sign_in_page import SignInPage
@@ -47,6 +49,10 @@ class ApiKeysPage(BasePage):
     def click_generate_api_key_name_button(self):
         generate_api_key_button = self.driver.find_element(*ApiKeysLocator.GENERATE_BUTTON)
         generate_api_key_button.click()
+
+    def click_delete_api_key_icon(self):
+        delete_icon = self.driver.find_element(*ApiKeysLocator.DELETE_API_KEY_ICON)
+        delete_icon.click()
 
     def get_length_of_table_api_keys(self):
         initial_table_api_keys = self.elements_are_visible(ApiKeysLocator.TABLE_API_KEYS_CONTENT)
@@ -265,3 +271,11 @@ class ApiKeysPage(BasePage):
     def check_delete_api_key_button_is_displayed(self):
         assert self.element_is_displayed(ApiKeysLocator.DELETE_API_KEY_ICON), "The icon delete API key is not" \
                                                                                " displayed."
+
+    def check_that_api_key_rows_number_more_one(self):
+        rows_number = self.get_length_of_table_api_keys()
+        assert rows_number > 1, "The table API keys contains only one row."
+
+    def check_delete_popup_is_displayed(self):
+        assert self.alert_is_displayed(), "The popup for the approval of deleting the selected API key is not displayed"
+

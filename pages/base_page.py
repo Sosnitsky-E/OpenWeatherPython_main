@@ -3,7 +3,7 @@ from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, NoAlertPresentException
 from selenium.webdriver import ActionChains
 from selenium.webdriver import Keys
 
@@ -60,6 +60,13 @@ class BasePage:
             # wait.until(EC.visibility_of_element_located(locator))
             wait(self.driver, 10).until(EC.visibility_of_element_located(locator))
         except TimeoutException:
+            return False
+        return True
+
+    def alert_is_displayed(self):
+        try:
+            self.driver.switch_to.alert
+        except NoAlertPresentException:
             return False
         return True
 
