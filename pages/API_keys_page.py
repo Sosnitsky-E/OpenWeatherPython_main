@@ -279,3 +279,12 @@ class ApiKeysPage(BasePage):
     def check_delete_popup_is_displayed(self):
         assert self.alert_is_displayed(), "The popup for the approval of deleting the selected API key is not displayed"
 
+    def check_text_in_the_popup_delete_api_key(self):
+        expected_text = "Do you want to remove this key?"
+        alert = self.driver.switch_to.alert
+        actual_text = alert.text
+        assert actual_text == expected_text, "The clarifying question is not displayed in the popup" \
+                                              " to remove the API key."
+
+
+
