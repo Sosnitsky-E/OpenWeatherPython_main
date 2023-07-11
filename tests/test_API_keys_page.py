@@ -1,4 +1,4 @@
-import time
+
 
 import allure
 
@@ -370,6 +370,19 @@ class TestApiKey:
         api_keys_page.check_that_api_key_rows_number_more_one()
         api_keys_page.click_delete_api_key_icon()
         api_keys_page.check_text_in_the_popup_delete_api_key()
+
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story("US_017.05")
+    @allure.feature("Delete API key ")
+    def test_tc_017_05_04_the_icon_delete_api_key_name_is_not_displayed(self, driver):
+        """
+         In this test case, we are checking whether the icon for  deleting API key is not  displayed.
+        """
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.leave_one_row_in_the_table()
+        api_keys_page.check_delete_api_key_button_is_not_displayed()
+
 
 
 
