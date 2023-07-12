@@ -392,8 +392,8 @@ class TestApiKey:
         """
         api_keys_page = ApiKeysPage(driver)
         api_keys_page.open_api_keys_page()
-        rows = api_keys_page.get_length_of_table_api_keys()
         api_keys_page.add_row_in_table()
+        rows = api_keys_page.get_length_of_table_api_keys()
         api_keys_page.click_delete_api_key_icon()
         api_keys_page.check_api_key_is_not_deleted(rows)
 

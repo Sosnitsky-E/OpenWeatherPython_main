@@ -312,4 +312,4 @@ class ApiKeysPage(BasePage):
         alert = self.driver.switch_to.alert
         alert.dismiss()
         actual_row_number = self.get_length_of_table_api_keys()
-        assert actual_row_number == initial_row_number, f"The API key is deleted init rows {initial_row_number} actual row{actual_row_number}."
+        assert actual_row_number == initial_row_number, "The API key is deleted ."
