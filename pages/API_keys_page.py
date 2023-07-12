@@ -1,3 +1,5 @@
+import time
+
 from pages.base_page import BasePage
 from locators.API_keys_locators import ApiKeysLocator
 from pages.sign_in_page import SignInPage
@@ -96,9 +98,10 @@ class ApiKeysPage(BasePage):
             row_numbers -= 1
 
     def add_row_in_table(self):
-        self.get_length_of_table_api_keys()
-        self.enter_created_api_key_name("New row in table")
-        self.click_generate_api_key_name_button()
+        rows = self.get_length_of_table_api_keys()
+        if rows == 1:
+            self.enter_created_api_key_name("New row in table")
+            self.click_generate_api_key_name_button()
 
     def check_module_title_create_api_key_is_visible(self):
         module_create_api_key = self.driver.find_element(*ApiKeysLocator.MODULE_API_KEY_CREATE)
@@ -303,3 +306,10 @@ class ApiKeysPage(BasePage):
     def check_delete_api_key_button_is_not_displayed(self):
         delete_icon = self.element_is_displayed(ApiKeysLocator.DELETE_API_KEY_ICON)
         assert not delete_icon, "The icon delete API key is displayed."
+
+    def check_api_key_is_not_deleted(self, rows):
+        initial_row_number = rows
+        alert = self.driver.switch_to.alert
+        alert.dismiss()
+        actual_row_number = self.get_length_of_table_api_keys()
+        assert actual_row_number == initial_row_number, "The API key is deleted ."
