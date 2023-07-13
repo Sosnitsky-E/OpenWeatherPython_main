@@ -313,3 +313,10 @@ class ApiKeysPage(BasePage):
         alert.dismiss()
         actual_row_number = self.get_length_of_table_api_keys()
         assert actual_row_number == initial_row_number, "The API key is deleted ."
+
+    def check_api_key_is_deleted(self, rows):
+        initial_row_number = rows
+        alert = self.driver.switch_to.alert
+        alert.accept()
+        actual_row_number = self.get_length_of_table_api_keys()
+        assert actual_row_number == initial_row_number - 1, "The API key is deleted ."

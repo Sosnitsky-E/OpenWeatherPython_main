@@ -397,6 +397,19 @@ class TestApiKey:
         api_keys_page.click_delete_api_key_icon()
         api_keys_page.check_api_key_is_not_deleted(rows)
 
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story("US_017.05")
+    @allure.feature("Delete API key ")
+    def test_tc_017_05_06_the_api_key_is_deleted_when_clicking_ok_button(self, driver):
+        """
+            In this test case, we are checking whether the API key is deleted when clicking the 'OK' button.
+        """
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.add_row_in_table()
+        rows = api_keys_page.get_length_of_table_api_keys()
+        api_keys_page.click_delete_api_key_icon()
+        api_keys_page.check_api_key_is_deleted(rows)
 
 
 
