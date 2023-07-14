@@ -320,3 +320,11 @@ class ApiKeysPage(BasePage):
         alert.accept()
         actual_row_number = self.get_length_of_table_api_keys()
         assert actual_row_number == initial_row_number - 1, "The API key is deleted ."
+
+    def check_is_deleting_notice_displayed(self):
+        alert = self.driver.switch_to.alert
+        alert.accept()
+        expected_notice = 'API key was deleted successfully'
+        actual_notice = self.driver.find_element(*ApiKeysLocator.NOTICE_MESSAGE).text
+        assert actual_notice == expected_notice, "Text about successful deleting API key is not displayed."
+
