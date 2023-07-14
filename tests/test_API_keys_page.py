@@ -411,6 +411,18 @@ class TestApiKey:
         api_keys_page.click_delete_api_key_icon()
         api_keys_page.check_api_key_is_deleted(rows)
 
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story("US_017.05")
+    @allure.feature("Delete API key ")
+    def test_tc_017_05_07_the_notice_about_successful_deleting_API_key_is_displayed(self, driver):
+        """
+            In this test case, we are checking whether the notice about successful deleting API key is displayed..
+        """
+        api_keys_page = ApiKeysPage(driver)
+        api_keys_page.open_api_keys_page()
+        api_keys_page.add_row_in_table()
+        api_keys_page.click_delete_api_key_icon()
+        api_keys_page.check_is_deleting_notice_displayed()
 
 
 
